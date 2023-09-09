@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "start-local-osx": "next dev",
+    "start-local-win": "cross-env next dev",
     "build": "next build",
+    "build-win": "cross-env next build",
     "start": "next start -p 3001",
     "lint": "next lint",
     "format": "prettier --write src",
-    "test": "jest --transformIgnorePatterns \"node_modules/(?!@toolz/allow)/\""
+    "test-osx": "jest --transformIgnorePatterns \"node_modules/(?!@toolz/allow)/\"",
+    "test-win": "cross-env jest --transformIgnorePatterns \"node_modules/(?!@toolz/allow)/\""
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.19",
@@ -40,6 +43,7 @@
     "react-table": "^7.8.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "@babel/plugin-transform-modules-commonjs": "^7.12.13",
     "@babel/preset-env": "^7.22.15",
     "@babel/preset-typescript": "^7.22.15",
