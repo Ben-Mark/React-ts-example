@@ -1,6 +1,5 @@
 import React from "react";
-import { Flex, Input, Button, Box , Text, Spacer} from "@chakra-ui/react";
-import Divider from "@/components/layout/Divider";
+import { Flex, Box , Text, Spacer} from "@chakra-ui/react";
 
 
 const Footer = () => {

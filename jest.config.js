@@ -7,8 +7,12 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleDirectories: ['node_modules', '<rootDir>/'],
-  testEnvironment: 'jest-environment-jsdom',
+  testEnvironment: 'jsdom',
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+  // transformIgnorePatterns: [
+  //   "\"node_modules/(?!@toolz/allow)/\""
+  // ],
+  // testEnvironment: "jsdom",
   "moduleFileExtensions": [
     "ts",
     "tsx",
@@ -21,31 +25,5 @@ const customJestConfig = {
     "^@/(.*)$": "<rootDir>/src/$1"
   }
 }
-//
-// const shit = {
-//   "jest": {
-//     "roots": [
-//       "<rootDir>/src"
-//     ],
-//     "transform": {
-//       "^.+\\.tsx?$": "ts-jest"
-//     },
-//     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-//     "moduleFileExtensions": [
-//       "ts",
-//       "tsx",
-//       "js",
-//       "jsx",
-//       "json",
-//       "node"
-//     ],
-//     "setupFilesAfterEnv": [
-//       "<rootDir>/src/setupTests.ts"
-//     ],
-//     "moduleNameMapper": {
-//       "^@/(.*)$": "<rootDir>/src/$1"
-//     }
-//   }
-// }
 
 module.exports = createJestConfig(customJestConfig)

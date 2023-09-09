@@ -8,12 +8,7 @@
     "start": "next start -p 3001",
     "lint": "next lint",
     "format": "prettier --write src",
-    "test": "ts-node -r tsconfig-paths/register node_modules/.bin/jasmine",
-    "test2": "jasmine-ts",
-    "test3": "jest",
-    "jasmineTs": "jasmine --config=spec/jasmine.json spec/jasmine-ts.spec.ts",
-    "test:fancy": "jasmine --reporter=jasmine-console-reporter --config=jasmine.json",
-    "test6": "jest --transformIgnorePatterns \"node_modules/(?!@toolz/allow)/\" --env=jsdom"
+    "test": "jest --transformIgnorePatterns \"node_modules/(?!@toolz/allow)/\""
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.19",
