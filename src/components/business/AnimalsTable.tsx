@@ -18,7 +18,6 @@ export default function AnimalsTable() {
   });
 
   useEffect(() => {
-    debugger
     if (loading) {
       return;
     }
@@ -32,7 +31,6 @@ export default function AnimalsTable() {
         color: animal.color
       };
     });
-    debugger
     setAnimalsData({
       nodes: _animalsData
     });
@@ -87,12 +85,13 @@ export default function AnimalsTable() {
             onChange={handleSearch}
           />
           <br />
-
-          <CompactTable
-            columns={COLUMNS}
-            data={animalsData}
-            theme={theme}
-          />
+          <div data-testid="animals-table">
+            <CompactTable
+              columns={COLUMNS}
+              data={animalsData}
+              theme={theme}
+            />
+          </div>
         </div>
       </div>
     </>

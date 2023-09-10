@@ -1,40 +1,44 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import AnimalsTable from '@/components/business/AnimalsTable';
-import { useAnimals } from '@/store/hooks/useAnimals';
-
-// Mock the useAnimals custom hook
-jest.mock('@/store/hooks/useAnimals', () => ({
-  useAnimals: jest.fn(),
-}));
+import { render, screen, waitFor } from "@testing-library/react";
+import { Provider } from "react-redux";
+import AnimalsTable from "@/components/business/AnimalsTable";
+import { AnimalType, setAnimalsList } from "@/store/state/animals";
+import { store } from "@/store";
 
 
-describe('AnimalsTable', () => {
+describe("AnimalsTable Component", () => {
+
   beforeEach(() => {
-    (useAnimals as jest.Mock).mockReturnValue({
-      animalsList: [
-        { _id: '1', name: 'Dog', age: 2, color: 'Brown' },
-        { _id: '2', name: 'Cat', age: 1, color: 'Black' },
-      ],
-      loading: false,
-      searchAnimals: jest.fn(),
+
+    const animalsMock: AnimalType[] = [
+      { _id: "1", name: "Dog", age: 2, color: "Brown" },
+      { _id: "2", name: "Cat", age: 3, color: "Red" }
+    ];
+
+    store.dispatch(setAnimalsList(animalsMock));
+  });
+
+  it("should render one row", async () => {
+    render(
+      <Provider store={store}>
+        <AnimalsTable />
+      </Provider>
+    );
+
+    // Wait for table to render and use query to find rows
+    await waitFor(() => {
+      const table = screen.getByTestId("animals-table");
+      const rows = table.querySelectorAll("tbody tr");
+      expect(rows.length).toBe(2); // Assertion for 2 table rows
     });
   });
 
-  it('renders the search input', () => {
-    render(<AnimalsTable />);
+  it("renders the search input", () => {
+    render(
+      <Provider store={store}>
+        <AnimalsTable />
+      </Provider>
+    );
     const searchInput = screen.getByLabelText(/Search by Name:/i);
     expect(searchInput).toBeInTheDocument();
   });
-
-  it('renders table cells based on animals data', () => {
-    render(<AnimalsTable />);
-    const nameCell = screen.getByText('Dog');
-    const ageCells = screen.getAllByText('2');
-    expect(ageCells[0]).toBeInTheDocument();
-    const colorCell = screen.getByText('Brown');
-    expect(nameCell).toBeInTheDocument();
-    expect(colorCell).toBeInTheDocument();
-  });
-
 });

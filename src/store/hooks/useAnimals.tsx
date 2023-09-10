@@ -31,7 +31,14 @@ type UseAnimalsType = {
 } & AnimalsState
 
 
-export const useAnimals = (): { animalsList: AnimalType[]; searchAnimals: (name: any) => void, loading: boolean } => {
+type AnimalsApi = {
+  animalsList: AnimalType[],
+  searchAnimals: (name: any) => void,
+  updateAnimals: (animals: AnimalType[]) => void,
+  loading: boolean
+}
+
+export const useAnimals = (): AnimalsApi => {
 
   const componentJustMounted = useRef(true);
   // ** Hooks
@@ -40,11 +47,14 @@ export const useAnimals = (): { animalsList: AnimalType[]; searchAnimals: (name:
 
   const store:AnimalsState = useSelector((state: RootState) => state.animals)
 
-  debugger
+  const updateAnimals = (animals: AnimalType[]) => {
+    dispatch(setAnimalsList(animals));
+  }
+
   const searchAnimals = (name: any) => {
     invokeSearchApi(name)
       .then(animals => {
-        dispatch(setAnimalsList(animals));
+        updateAnimals(animals);
       })
       .catch(err => {
         console.error(err);
@@ -60,13 +70,16 @@ export const useAnimals = (): { animalsList: AnimalType[]; searchAnimals: (name:
 
     componentJustMounted.current = false;
 
-    invokeSearchApi("")
-      .then(animals => {
-        dispatch(setAnimalsList(animals));
-      })
-      .catch(err => {
-        console.error(err);
-      });
+    if(!process.env.SYSTEM_UNDER_TEST){
+      invokeSearchApi("")
+        .then(animals => {
+          updateAnimals(animals);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
+
 
   }, []);
 
@@ -74,7 +87,8 @@ export const useAnimals = (): { animalsList: AnimalType[]; searchAnimals: (name:
   return {
     animalsList: store.animalsList,
     loading: store.loading,
-    searchAnimals: searchAnimals,
+    searchAnimals,
+    updateAnimals
   };
 
 };
