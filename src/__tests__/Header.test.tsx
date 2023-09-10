@@ -13,6 +13,8 @@ describe('Header', () => {
     expect(title).toBeInTheDocument();
     expect(subtitle).toBeInTheDocument();
 
+    expect(title.tagName.toLowerCase()).toEqual('h1');
+
     expect(container).toMatchSnapshot();
   });
 });
