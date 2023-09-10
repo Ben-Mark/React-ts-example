@@ -52,7 +52,6 @@ export default function AnimalsTable() {
     { label: "Age", renderCell: (item: any) => item.age },
     { label: "Color", renderCell: (item: any) => item.color },
     { label: "Id", renderCell: (item: any) => item?.id },
-    { label: "DocId", renderCell: (item: any) => item?.documentId }
   ];
 
   return (
