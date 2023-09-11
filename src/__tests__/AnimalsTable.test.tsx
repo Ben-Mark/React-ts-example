@@ -18,7 +18,6 @@ describe("AnimalsTable Component", () => {
   });
 
   it("should render one row", async () => {
-    try{
       render(
         <Provider store={store}>
           <AnimalsTable />
@@ -31,14 +30,10 @@ describe("AnimalsTable Component", () => {
         const rows = table.querySelectorAll("tbody tr");
         expect(rows.length).toBe(2); // Assertion for 2 table rows
       });
-    }catch(e){
-      throw e
-    }
 
   });
 
   it("renders the search input", () => {
-    try{
       render(
         <Provider store={store}>
           <AnimalsTable />
@@ -46,9 +41,6 @@ describe("AnimalsTable Component", () => {
       );
       const searchInput = screen.getByLabelText(/Search by Name:/i);
       expect(searchInput).toBeInTheDocument();
-    }catch(e){
-      throw e
-    }
 
   });
 });
