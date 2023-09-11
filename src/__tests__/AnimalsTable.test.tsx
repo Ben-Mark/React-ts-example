@@ -17,7 +17,7 @@ describe("AnimalsTable Component", () => {
     store.dispatch(setAnimalsList(animalsMock));
   });
 
-  it("should render one row", async () => {
+  it("should render 2 rows", async () => {
       render(
         <Provider store={store}>
           <AnimalsTable />
