@@ -16,15 +16,15 @@ export type AnimalType = {
 
 
 export const animalsSlice = createSlice({
-  name: 'animals',
+  name: 'animal',
   initialState: {
     loading: true,
     animalsList: []
   } as AnimalsState,
   reducers: {
     setAnimalsList: (state: AnimalsState, action: PayloadAction<AnimalType[]>) => {
-      state.animalsList = action.payload
       state.loading = false
+      //  TODO: fix the bad reducer setter
     }
   }
 })
