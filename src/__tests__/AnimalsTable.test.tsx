@@ -18,27 +18,37 @@ describe("AnimalsTable Component", () => {
   });
 
   it("should render one row", async () => {
-    render(
-      <Provider store={store}>
-        <AnimalsTable />
-      </Provider>
-    );
+    try{
+      render(
+        <Provider store={store}>
+          <AnimalsTable />
+        </Provider>
+      );
 
-    // Wait for table to render and use query to find rows
-    await waitFor(() => {
-      const table = screen.getByTestId("animals-table");
-      const rows = table.querySelectorAll("tbody tr");
-      expect(rows.length).toBe(2); // Assertion for 2 table rows
-    });
+      // Wait for table to render and use query to find rows
+      await waitFor(() => {
+        const table = screen.getByTestId("animals-table");
+        const rows = table.querySelectorAll("tbody tr");
+        expect(rows.length).toBe(2); // Assertion for 2 table rows
+      });
+    }catch(e){
+      throw e
+    }
+
   });
 
   it("renders the search input", () => {
-    render(
-      <Provider store={store}>
-        <AnimalsTable />
-      </Provider>
-    );
-    const searchInput = screen.getByLabelText(/Search by Name:/i);
-    expect(searchInput).toBeInTheDocument();
+    try{
+      render(
+        <Provider store={store}>
+          <AnimalsTable />
+        </Provider>
+      );
+      const searchInput = screen.getByLabelText(/Search by Name:/i);
+      expect(searchInput).toBeInTheDocument();
+    }catch(e){
+      throw e
+    }
+
   });
 });

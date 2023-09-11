@@ -46,11 +46,12 @@ export default function AnimalsTable() {
 
 
   const COLUMNS = [
-    { label: "Name", renderCell: (item: any) => item.name },
-    { label: "Age", renderCell: (item: any) => item.age },
-    { label: "Color", renderCell: (item: any) => item.color },
-    { label: "Id", renderCell: (item: any) => item?.id },
+    { label: "Name", renderCell: (item: AnimalType) => item.name },
+    { label: "Age", renderCell: (item: AnimalType) => item.age },
+    { label: "Color", renderCell: (item: AnimalType) => item.color },
+    { label: "Id" ,renderCell: (item: AnimalType) => item?._id },
   ];
+
 
   return (
     <>

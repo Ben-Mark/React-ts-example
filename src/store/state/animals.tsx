@@ -23,7 +23,6 @@ export const animalsSlice = createSlice({
   } as AnimalsState,
   reducers: {
     setAnimalsList: (state: AnimalsState, action: PayloadAction<AnimalType[]>) => {
-      debugger
       state.animalsList = action.payload
       state.loading = false
     }
