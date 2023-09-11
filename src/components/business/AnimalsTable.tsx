@@ -22,17 +22,10 @@ export default function AnimalsTable() {
       return;
     }
 
-    const _animalsData: AnimalType[] = animalsList.map((animal: AnimalType, index: number) => {
-      return {
-        id: index,
-        documentId: animal._id,
-        name: animal.name,
-        age: animal.age,
-        color: animal.color
-      };
-    });
+    //TODO: fix the missing key prop.
+
     setAnimalsData({
-      nodes: _animalsData
+      nodes: animalsList
     });
 
   }, [animalsList, loading]);
