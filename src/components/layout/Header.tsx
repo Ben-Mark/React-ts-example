@@ -5,13 +5,13 @@ import { Flex, Avatar, Text } from "@chakra-ui/react";
 const Header = () => {
   return (
     <Flex pt={"7vh"} w="100%" style={{ justifyContent: "center", alignItems: "center" }}>
-      <Avatar size="lg" name="animal-foot" src="/assets/logo/animal-foot.png">
-        {/*<AvatarBadge boxSize="1.05em" bg="green.500" />*/}
-      </Avatar>
+
+      <Avatar size="lg" name="animal-foot" src="/assets/logo/animal-foot.png"/>
+
       <Flex flexDirection="column" mx="5" justify="center" style={{ textAlign: "center" }}>
-        <Text as="h1" fontSize="lg" fontWeight="bold" style={{ fontSize: "1.5em", color: "#333" }}>
-          Animals React Example
-        </Text>
+
+        {/* Add the missing title Animals React Example*/}
+
         <Text color="green.500" style={{ color: "#4CAF50" }}>
           We love Animals
         </Text>
