@@ -1,7 +1,12 @@
 {
-  "name": "animals-rest",
+  "name": "animals-react",
   "version": "0.1.0",
   "private": true,
+  "author": "Ben-Mark",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ben-Mark/React-ts-example.git"
+  },
   "scripts": {
     "start-local-osx": "next dev",
     "start-local-win": "cross-env next dev",
