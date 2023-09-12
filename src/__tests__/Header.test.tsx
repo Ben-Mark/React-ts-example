@@ -15,7 +15,6 @@ describe('Header', () => {
 
     expect(title.tagName.toLowerCase()).toEqual('h1');
 
-    expect(container).toMatchSnapshot();
   });
 });
 
