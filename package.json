@@ -8,15 +8,15 @@
     "url": "https://github.com/Ben-Mark/React-ts-example.git"
   },
   "scripts": {
-    "start-local-osx": "next dev",
-    "start-local-win": "cross-env next dev",
-    "build": "next build",
-    "build-win": "cross-env next build",
-    "start": "next start -p 3001",
+    "start-local": "cross-env next dev",
+    "build": "cross-env next build",
+    "start": "next start -p 4000",
     "lint": "next lint",
     "format": "prettier --write src",
-    "test-osx": "jest --transformIgnorePatterns \"node_modules/(?!@toolz/allow)/\"",
-    "test-win": "cross-env jest --transformIgnorePatterns \"node_modules/(?!@toolz/allow)/\""
+    "test": "cross-env jest --transformIgnorePatterns \"node_modules/(?!@toolz/allow)/\"",
+    "test-prod": "cross-env jest --transformIgnorePatterns \"/app/node_modules/(?!@toolz/allow)/\"",
+    "docker-compose-build-start": "cross-env docker-compose --env-file .env.docker up -d --build",
+    "docker-compose-down": "cross-env docker-compose --env-file .env.docker down"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.19",
