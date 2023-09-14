@@ -14,7 +14,6 @@
     "lint": "next lint",
     "format": "prettier --write src",
     "test": "cross-env jest --transformIgnorePatterns \"node_modules/(?!@toolz/allow)/\"",
-    "test-prod": "cross-env jest --transformIgnorePatterns \"/app/node_modules/(?!@toolz/allow)/\"",
     "docker-compose-build-start": "cross-env docker-compose --env-file .env.docker up -d --build",
     "docker-compose-down": "cross-env docker-compose --env-file .env.docker down"
   },
